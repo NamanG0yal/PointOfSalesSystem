@@ -53,9 +53,7 @@ SELECT * FROM inventory_items WHERE Item_SKU = 'SKU12345';
 
 
 
-```sql
-
-
+```
 
 
 # Customer Model Documentation
