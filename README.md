@@ -103,3 +103,44 @@ customer.save()
 # Example: Deleting a customer record
 customer = Customer.objects.get(c_ID=101)
 customer.delete()
+```
+# Staff Model Documentation
+
+This documentation outlines the details of the `Staff` model, including field descriptions, relationships, and example usage.
+
+---
+
+## **Model: Staff**
+
+The `Staff` model stores information about staff members, including their ID, name, email, admin status, and contact number.
+
+### **Fields**
+
+| Field Name   | Data Type   | Description                                  | Example                |
+|--------------|-------------|----------------------------------------------|------------------------|
+| `s_ID`       | Integer     | Unique identifier for a staff member.        | `201`                 |
+| `s_name`     | String      | Name of the staff member.                    | `Alice Smith`         |
+| `s_email`    | String      | Email address of the staff member.           | `alice@example.com`   |
+| `s_isAdmin`  | Boolean     | Indicates if the staff member has admin rights.| `True` or `False`     |
+| `s_contact`  | String      | Contact number of the staff member.          | `+1234567890`         |
+
+### **Relationships**
+
+- **No direct relationships defined** for this model in this example. If this model is linked to others (e.g., `Departments` or `Roles`), they should be explicitly defined.
+
+---
+
+## **Example Usage**
+
+### **Creating a Staff Member**
+```python
+# Example: Creating a new staff member instance
+staff = Staff(
+    s_ID=201,
+    s_name="Alice Smith",
+    s_email="alice@example.com",
+    s_isAdmin=True,
+    s_contact="+1234567890"
+)
+staff.save()
+```
