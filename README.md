@@ -209,3 +209,4 @@ transaction.save()
 transaction = Transaction.objects.get(t_ID=1001)
 transaction.delete()
 ```
+![Database Relations](database.png "Database Relations")
