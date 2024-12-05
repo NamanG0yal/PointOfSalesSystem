@@ -48,6 +48,16 @@ WHERE Item_SKU = 'SKU12345';
 -- Query to find a product by SKU
 SELECT * FROM inventory_items WHERE Item_SKU = 'SKU12345';
 
+
+
+
+
+
+```sql
+
+
+
+
 # Customer Model Documentation
 
 This documentation outlines the details of the `Customer` model, including field descriptions, relationships, and example usage.
