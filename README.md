@@ -1,6 +1,6 @@
-# Inventory System Models Documentation
+# Point Of Sales System
 
-This documentation outlines the models for an inventory management system, including **InventoryItem**, **Customer**, **Staff**, and **Transaction** models. Each section covers field descriptions, relationships, and example usage for interacting with the system.
+This documentation outlines the models for a point of sales system, including **InventoryItem**, **Customer**, **Staff**, and **Transaction** models. Each section covers field descriptions, relationships, and example usage for interacting with the system.
 
 ---
 
