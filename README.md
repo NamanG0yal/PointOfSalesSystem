@@ -143,4 +143,69 @@ staff = Staff(
     s_contact="+1234567890"
 )
 staff.save()
+# Example: Fetching a staff member by ID
+staff = Staff.objects.get(s_ID=201)
+print(staff.s_name)  # Output: Alice Smith
+# Example: Updating the admin status of a staff member
+staff = Staff.objects.get(s_ID=201)
+staff.s_isAdmin = False
+staff.save()
+# Example: Deleting a staff member record
+staff = Staff.objects.get(s_ID=201)
+staff.delete()
+
+```
+# Transaction Model Documentation
+
+This documentation outlines the details of the `Transaction` model, including field descriptions, relationships, and example usage.
+
+---
+
+## **Model: Transaction**
+
+The `Transaction` model stores information about financial transactions, including transaction ID, customer ID, date, amount, and category.
+
+### **Fields**
+
+| Field Name   | Data Type   | Description                                   | Example                 |
+|--------------|-------------|-----------------------------------------------|-------------------------|
+| `t_ID`       | Integer     | Unique identifier for the transaction.        | `1001`                 |
+| `c_ID`       | Integer     | Identifier of the associated customer.        | `101`                  |
+| `t_date`     | DateTime    | Date and time of the transaction.             | `2024-12-05 15:30:00`  |
+| `t_amount`   | Decimal     | The monetary value of the transaction.        | `250.75`               |
+| `t_category` | String      | Category or type of the transaction.          | `Groceries`            |
+
+### **Relationships**
+
+- **Customer (`c_ID`)**: A foreign key relationship linking the transaction to the `Customer` model.
+
+---
+
+## **Example Usage**
+
+### **Creating a Transaction**
+```python
+# Example: Creating a new transaction instance
+transaction = Transaction(
+    t_ID=1001,
+    c_ID=101,
+    t_date="2024-12-05 15:30:00",
+    t_amount=250.75,
+    t_category="Groceries"
+)
+transaction.save()
+# Example: Fetching a transaction by ID
+transaction = Transaction.objects.get(t_ID=1001)
+print(transaction.t_amount)  # Output: 250.75
+# Example: Fetching all transactions for a customer
+transactions = Transaction.objects.filter(c_ID=101)
+for t in transactions:
+    print(f"Transaction ID: {t.t_ID}, Amount: {t.t_amount}")
+# Example: Updating the category of a transaction
+transaction = Transaction.objects.get(t_ID=1001)
+transaction.t_category = "Utilities"
+transaction.save()
+# Example: Deleting a transaction record
+transaction = Transaction.objects.get(t_ID=1001)
+transaction.delete()
 ```
