@@ -56,5 +56,5 @@ def add_item():
     conn.commit()
     cur.close()
     conn.close()
-    flash('Item Added Successfully')
+    flash('Item Added Successfully' , 'info')
     return redirect(url_for('Inventory'))
