@@ -6,7 +6,7 @@ from flask import     redirect,url_for  , render_template , request , jsonify   
 
 app = Flask(__name__)
 
-
+app.secret_key = 'naman'
 def get_db_connection():
         conn = psycopg2.connect(
                 host="localhost",
@@ -19,12 +19,18 @@ def get_db_connection():
 @app.route('/inventory'   ,  methods=["POST"  ,  "GET" , "PUT" , "DELETE"  ,"PATCH"])
 def Inventory():
     
+    conn = get_db_connection()
+    cur  = conn.cursor()
+    cur.execute("SELECT * FROM InventoryItem")
+    Inventorydata  = cur.fetchall()
+    cur.close()
+    conn.close()
 
     
    
 
 
-    return render_template("inventory/inventory.html")
+    return render_template("inventory/inventory.html" , Inventory=Inventorydata)
 
 
 
