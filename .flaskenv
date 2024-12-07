@@ -1,1 +1,2 @@
-FLASK_APP=tutorial.py	
+FLASK_APP=__init__.py	
+DB_USERNAME='naman'

@@ -1,16 +1,17 @@
 import os
 import psycopg2 
-
+from psycopg2.extras import RealDictCursor
 import click 
 from flask import current_app ,g 
 from datetime import datetime
-
-conn = psycopg2.connect(
-        host="localhost",
-        database="zapay",
-        user=os.environ["DB_USERNAME"],
-        password=os.environ["DB_PASSWORD"])
-
+def get_db_connection():
+        conn = psycopg2.connect(
+                host="localhost",
+                database="zapay",
+                user='naman',
+                password='naman')
+        return conn
+conn = get_db_connection()
 cur  = conn.cursor()
 cur.execute('DROP TABLE IF EXISTS InventoryItem')
 cur.execute('CREATE TABLE InventoryItem ('
@@ -45,7 +46,7 @@ cur.execute('CREATE TABLE Transaction ('
 cur.execute('INSERT INTO InventoryItem (Item_SKU, Item_Name, Item_Description, Item_Price , Item_Qty)'
             'VALUES (%s, %s, %s, %s  , %s  )',
             ('Toothbrush',
-             'ChizelBristle',
+             'ChizelBristleS',
              'Electric toothbrush for the new generation ',
              10,
              5000)
