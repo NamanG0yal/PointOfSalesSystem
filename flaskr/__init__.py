@@ -2,6 +2,7 @@ import os
 import psycopg2
 from datetime import datetime
 from flask import Flask
+from flask import     redirect,url_for  , render_template , request
 
 def get_db_connection():
 
@@ -11,30 +12,14 @@ def get_db_connection():
             user=os.environ['DB_USERNAME'],
             password=os.environ['DB_PASSWORD'])
     return conn
-def create_app(test_config=None):
-    # create and configure the app
-    app = Flask(__name__, instance_relative_config=True)
-    app.config.from_mapping(
-        SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
-    )
-
-    if test_config is None:
-        # load the instance config, if it exists, when not testing
-        app.config.from_pyfile('config.py', silent=True)
-    else:
-        # load the test config if passed in
-        app.config.from_mapping(test_config)
-
-    # ensure the instance folder exists
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
+app = Flask(__name__)
 
 
-    @app.route('/')
-    def hello():
-        return 'Hello, World!'
+    
+@app.route('/inventory'   ,  methods=["POST"  ,  "GET" , "PUT" , "DELETE"  ,"PATCH"])
+def Inventory():
+    if request.method == "GET":
 
-    return app
+
+        return render_template("inventory/inventory.html")
+
