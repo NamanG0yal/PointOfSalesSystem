@@ -58,3 +58,8 @@ def add_item():
     conn.close()
     flash('Item Added Successfully' , 'info')
     return redirect(url_for('Inventory'))
+@app.route('/delete_item' , methods=['POST'])
+def delete_item():
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('')
