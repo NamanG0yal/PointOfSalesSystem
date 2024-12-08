@@ -1,11 +1,12 @@
 import os
 import psycopg2
 from datetime import datetime
-from flask import Flask
-from flask import     redirect,url_for  , render_template , request , jsonify   ,flash
+from flask import Flask  , session
+from auth import auth
+from flask import     redirect,url_for  , render_template , request , jsonify   ,flash  , Blueprint
 
 app = Flask(__name__)
-
+app.register_blueprint(auth , url_prefix='')
 app.secret_key = 'naman'
 def get_db_connection():
         conn = psycopg2.connect(
