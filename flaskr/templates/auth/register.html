@@ -57,7 +57,7 @@
         <p>Join us and start your journey today.</p>
     </div>
 
-    <form action="/register" method="POST">
+    <form action="/new_acc" method="POST">
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input type="text" class="form-control" id="username" name="username" required>
@@ -70,8 +70,28 @@
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <button type="submit" class="btn btn-success w-100">Sign Up</button>
+        <div class="mb-3">
+            <label for="contact" class="form-label">Phone</label>
+            <input type="tel" class="form-control" id="Phone" name="contact" required>
+        </div>
+        <div class="mb-3">
+            <label for="is_admin" class="form-label">Is Admin</label>
+            <select class="form-control" id="is_admin" name="is_admin" required>
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+        </div>            
+        <button id='SignUp' type="submit" class="btn btn-success w-100">Sign Up</button>
+        <script>document.addEventListener('DOMContentLoaded' , function() {
+            const button = document.getElementById('SignUp');
+            button.addEventListener('click' , function() {
+                const message = document.createElement('p');
+                message.textContent  = 'Account Successfully created!';
+                document.body.appendChild(message);
+            });
+        });</script>
         <div class="mt-3 text-center">
+
             <small>OR</small>
         </div>
     </form>

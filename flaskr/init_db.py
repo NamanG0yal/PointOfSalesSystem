@@ -33,7 +33,8 @@ cur.execute('CREATE TABLE Staff ('
                                  's_name  varchar(100) NOT NULL,'
                                  's_email varchar(100) NOT NULL ,'
                                  's_isAdmin varchar(13) NOT NULL,'
-                                 's_contact varchar(10) NOT NULL UNIQUE);'
+                                 's_contact varchar(10) NOT NULL UNIQUE,'
+                                 'pass varchar(199) NOT NULL CHECK(LENGTH(pass) >= 8) );'
                                  )
 cur.execute('CREATE TABLE Transaction ('
                                  't_ID bigserial PRIMARY KEY,'
@@ -44,7 +45,7 @@ cur.execute('CREATE TABLE Transaction ('
                                  'FOREIGN KEY(c_ID) REFERENCES Customer(c_ID));'
                                  )
 cur.execute('INSERT INTO InventoryItem (Item_SKU, Item_Name, Item_Description, Item_Price , Item_Qty)'
-            'VALUES (%s, %s, %s, %s  , %s  )',
+            'VALUES (%s, %s, %s, %s , %s )',
             ('Toothbrush',
              'ChizelBristleS',
              'Electric toothbrush for the new generation ',
@@ -58,13 +59,14 @@ cur.execute('INSERT INTO Customer (c_ID  , c_name ,c_email , c_contact)'
          'namagyal2@gmail.com',
          9871912939213)
         )
-cur.execute('INSERT INTO Staff (s_ID , s_name , s_email , s_isAdmin , s_contact)'
-        'VALUES (%s, %s, %s, %s  , %s )',
+cur.execute('INSERT INTO Staff (s_ID , s_name , s_email , s_isAdmin , s_contact , pass)'
+        'VALUES (%s, %s, %s, %s  , %s , %s )',
         (100000000,
          'Suchi',
          'Suchi@zapay.org',
          'Yes',
-         '9871993533')
+         '9871993533',
+         'qwerty_zaxeru')
         )
 cur.execute('INSERT INTO Transaction (t_ID , t_date , t_amount , t_category  , c_ID )'
         'VALUES (%s, %s, %s, %s  , %s)',

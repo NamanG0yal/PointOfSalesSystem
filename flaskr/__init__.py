@@ -2,12 +2,16 @@ import os
 import psycopg2
 from datetime import datetime
 from flask import Flask  , session
-from auth import auth
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from werkzeug.security import generate_password_hash, check_password_hash
+from .auth import auth
 from flask import     redirect,url_for  , render_template , request , jsonify   ,flash  , Blueprint
 
 app = Flask(__name__)
 app.register_blueprint(auth , url_prefix='')
 app.secret_key = 'naman'
+app.config['JWT_SECRET_KEY'] = 'naman'
+jwt = JWTManager(app)
 def get_db_connection():
         conn = psycopg2.connect(
                 host="localhost",
@@ -18,8 +22,9 @@ def get_db_connection():
         return conn
     
 @app.route('/inventory'   ,  methods=["POST"  ,  "GET" , "PUT" , "DELETE"  ,"PATCH"])
+@jwt_required()
 def Inventory():
-    
+    current_user = get_jwt_identity()
     conn = get_db_connection()
     cur  = conn.cursor()
     cur.execute("SELECT * FROM InventoryItem")
