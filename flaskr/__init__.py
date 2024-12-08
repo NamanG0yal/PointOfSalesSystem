@@ -62,4 +62,32 @@ def add_item():
 def delete_item():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute('')
+    name = request.form['name']
+
+    cur.execute('DELETE FROM InventoryItem WHERE item_name=%s',(name,))
+    conn.commit()
+    cur.close()
+    conn.close()
+
+    flash(f"{name} deleted Successfully" , 'info')
+    return redirect(url_for('Inventory'))
+@app.route('/edit_item', methods=['POST' , 'GET' , "PUT"  , "DELETE"])
+def edit_item():
+    conn = get_db_connection()
+    cur = conn.cursor()
+    sku  = request.form['sku']
+    item_name = request.form['name']
+    description = request.form['description']
+    price = float(request.form['price'])
+    quantity  = int(request.form['quantity'])
+
+    cur.execute("""
+        UPDATE InventoryItem
+        SET Item_SKU= %s Item_Description = %s, Item_Price = %s, Item_Qty = %s
+        WHERE Item_Name = %s
+    """, ( sku,description, price, quantity , item_name))
+    conn.commit()
+    cur.close()
+    conn.close()
+    flash("edit Successful" , 'info')
+    return redirect(url_for('Inventory'))
