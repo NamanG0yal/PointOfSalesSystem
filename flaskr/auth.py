@@ -17,8 +17,17 @@ auth.permanent_session_lifetime = timedelta(days=10)
 @auth.route('/dashboard' , methods=['POST' , "GET"])
 def dashboard():
 	if request.method == 'POST':
-		conn = get_db_connection()
-		cur  = conn.cursor()
+		if session['admin'] == True:
+			
+
+
+		elif session['admin'] == False:
+
+
+		if 'admin' not in session:
+			return redirect(url_for('login'))
+
+
 
 	else:
 		return render_template('dashboard')
@@ -30,6 +39,7 @@ def login():
 		email  = request.form['email']
 		password = request.form['password']
 		remember = request.form['remember']
+		session['email'] = email
 		if remember == '1':
 			session.permanent = True
 		else:
@@ -39,13 +49,19 @@ def login():
 		cur  = conn.cursor()
 		cur.execute("SELECT * FROM Staff WHERE s_email = %s",(email,))
 		data = cur.fetchone()
+		cur.execute("SELECT s_admin FROM Staff WHERE s_email = %s" , (session['email']))
+		data = cur.fetchone()
+		if data[0].lower() == 'yes':
+			session['admin'] = True
+		else:
+			session['admin']  = False
 		cur.close()
 		conn.close()
 		if email:
 			stored_password  = data[5]
 			if check_password_hash(stored_password , password):
 				access_token = create_access_token(identity = email)
-				return redirect(url_for('Inventory'))
+				return redirect(url_for('dashboard'))
 			else:
 				return 'Incorrect Password typed'
 

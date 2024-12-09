@@ -22,7 +22,7 @@ def get_db_connection():
         return conn
     
 @app.route('/inventory'   ,  methods=["POST"  ,  "GET" , "PUT" , "DELETE"  ,"PATCH"])
-@jwt_required()
+
 def Inventory():
     current_user = get_jwt_identity()
     conn = get_db_connection()
