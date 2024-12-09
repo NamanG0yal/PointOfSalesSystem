@@ -13,6 +13,15 @@ def get_db_connection():
         return conn
 auth = Blueprint('auth',__name__,static_folder='static' , template_folder='templates/auth')
 auth.permanent_session_lifetime = timedelta(days=5)
+
+@auth.route('/dashboard' , methods=['POST' , "GET"])
+def dashboard():
+	if request.method == 'POST':
+
+	else:
+		return render_template()
+
+
 @auth.route('/login' , methods=['POST' , 'GET'])
 def login():
 	if request.method == 'POST':
@@ -55,12 +64,11 @@ def new_acc():
 	contact = request.form['contact']
 	pp  = generate_password_hash(password , method='pbkdf2:sha256', salt_length=12)
 	is_admin = request.form['is_admin']
-	cur.execute('INSERT INTO Staff (  s_name , s_email , s_isAdmin , s_contact  ,pass)'
-        'VALUES ( %s, %s, %s  , %s , %s )',
+	cur.execute('INSERT INTO Staff (  s_name , s_email  , s_contact  ,pass)'
+        'VALUES ( %s, %s, %s  , %s )',
         (
          f'{str(username)}',
          f'{str(email)}',
-         f'{str(is_admin)}',
          f'{str(contact)}',
          f'{pp}')
         )
