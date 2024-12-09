@@ -19,10 +19,10 @@ def dashboard():
 	if request.method == 'POST':
 		if session['admin'] == True:
 			
-
+			return render_template('auth.login')
 
 		elif session['admin'] == False:
-
+			return render_template('register')
 
 		if 'admin' not in session:
 			return redirect(url_for('login'))
@@ -30,7 +30,7 @@ def dashboard():
 
 
 	else:
-		return render_template('dashboard')
+		return render_template('dashboard.html')
 
 
 @auth.route('/login' , methods=['POST' , 'GET'])
