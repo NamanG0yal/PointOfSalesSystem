@@ -12,14 +12,16 @@ def get_db_connection():
                 password='naman')
         return conn
 auth = Blueprint('auth',__name__,static_folder='static' , template_folder='templates/auth')
-auth.permanent_session_lifetime = timedelta(days=5)
+auth.permanent_session_lifetime = timedelta(days=10)
 
 @auth.route('/dashboard' , methods=['POST' , "GET"])
 def dashboard():
 	if request.method == 'POST':
+		conn = get_db_connection()
+		cur  = conn.cursor()
 
 	else:
-		return render_template()
+		return render_template('dashboard')
 
 
 @auth.route('/login' , methods=['POST' , 'GET'])
@@ -27,6 +29,12 @@ def login():
 	if request.method == 'POST':
 		email  = request.form['email']
 		password = request.form['password']
+		remember = request.form['remember']
+		if remember == '1':
+			session.permanent = True
+		else:
+			session.permanent = False
+
 		conn = get_db_connection()
 		cur  = conn.cursor()
 		cur.execute("SELECT * FROM Staff WHERE s_email = %s",(email,))
