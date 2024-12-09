@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.register_blueprint(auth , url_prefix='')
 app.secret_key = 'naman'
 app.config['JWT_SECRET_KEY'] = 'naman'
-jwt = JWTManager(app)
+
 def get_db_connection():
         conn = psycopg2.connect(
                 host="localhost",
@@ -24,7 +24,7 @@ def get_db_connection():
 @app.route('/inventory'   ,  methods=["POST"  ,  "GET" , "PUT" , "DELETE"  ,"PATCH"])
 
 def Inventory():
-    current_user = get_jwt_identity()
+ 
     conn = get_db_connection()
     cur  = conn.cursor()
     cur.execute("SELECT * FROM InventoryItem")
