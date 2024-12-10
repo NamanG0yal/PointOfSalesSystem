@@ -84,11 +84,21 @@ flaskr/
   \c zapay;
   #To check if the database has been created succesfully 
   \q
+
   ```
 **Initializing the database**:
   ```bash
   python flaskr/init_db.py
   ```
+**Database Testing**:
+ ```bash
+ psql -U postgres
+ #add the password on prompt
+ \c zapay;
+ SELECT * FROM InventoryItem;
+ #should display everything under the table inventory item
+ #Send a query from the webpage or the init_db.py file and run the command again you should be able to see the change alternately these changes are also visible on the inventry management webpage !! 
+ ```
 5. **Running the flask app**:
   ```bash
   export app=__init__.py #adding the app which needs to be run when calling flask --app in the environment variable for flask u can manually add this line .flaskenv file 
