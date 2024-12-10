@@ -68,7 +68,13 @@ flaskr/
   source pos/bin/activate  # On Windows: pos\Scripts\activate
 
   ```
-3. **Setting up the database**:
+3. **Installing Dependencies**:
+  ```bash
+  pip install flask postgres psycopg2-binary
+  ```
+
+
+4. **Setting up the database**:
   ```bash
   psql -U postgres
   #enter the password that you set during the installation of psql 
@@ -78,6 +84,14 @@ flaskr/
   \c zapay;
   #To check if the database has been created succesfully 
   \q
+  ```
+**Initializing the database**:
+  ```bash
+  python flaskr/init_db.py
+  ```
+5. **Running the flask app**:
+  ```bash
+  flask --app flaskr run --debug --host=0.0.0.0
   ```
 ## Database Structure
 
