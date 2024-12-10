@@ -1,5 +1,35 @@
 # Point Of Sales System
 
+## Table of Contents
+1. [Overview](#overview)
+2. [Project File Structure](#project-file-structure)
+3. [Setup and Installation](#setup-and-installation)
+4. [Running the Application](#running-the-application)
+5. [Database Initialization](#database-initialization)
+6. [Database Structure](#database-structure)
+7. [Application Components](#application-components)
+   - [Main Application (`__init__.py`)](#main-application-__init__py)
+   - [Database Initialization (`init_db.py`)](#database-initialization-init_dbpy)
+   - [Authentication (`auth.py`)](#authentication-authpy)
+   - [Templates](#templates)
+
+
+---
+
+## Overview
+
+**POS** is a modular Flask web application that includes functionality for user authentication and a dashboard interface. It uses psql as the database backend and follows the Flask application factory pattern for scalability and maintainability.
+
+---
+
+## Project File Structure
+
+
+
+flaskr/ ├── init.py # Main application factory ├── init_db.py # Database initialization script ├── auth.py # Authentication blueprint ├── templates/ # HTML templates │ ├── auth/ # Templates for authentication │ │ ├── login.html │ │ ├── register.html │ └── dashboard/ # Templates for dashboard │ ├── index.html ├── static/ # Static files (CSS, JS, images)
+
+## Database Structure
+
 This documentation outlines the models for a point of sales system, including **InventoryItem**, **Customer**, **Staff**, and **Transaction** models. Each section covers field descriptions, relationships, and example usage for interacting with the system.
 
 ---
