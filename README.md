@@ -52,6 +52,7 @@ flaskr/
 ### Prerequisites
 - Python 3.7 or higher
 - pip (Python package installer)
+-Postgressql (Latest Version)
 
 ### Steps
 
@@ -65,6 +66,10 @@ flaskr/
   rm pos/
   python -m venv pos
   source pos/bin/activate  # On Windows: pos\Scripts\activate
+
+  ```
+3. **Setting up the database**:
+  ```bash
 
   ```
 ## Database Structure
