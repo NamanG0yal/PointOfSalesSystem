@@ -38,6 +38,23 @@ flaskr/
 │       ├── inventory.html
 ├── static/              # Static files (CSS, JS, images
 ```
+### Explanation:
+1. **`__init__.py`**: Contains the main application factory and initializes core c ```ages.
+
+---
+
+## Setup and Installation
+
+### Prerequisites
+- Python 3.7 or higher
+- pip (Python package installer)
+
+### Steps
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-repo/flaskr.git
+   ```
 ## Database Structure
 
 This documentation outlines the models for a point of sales system, including **InventoryItem**, **Customer**, **Staff**, and **Transaction** models. Each section covers field descriptions, relationships, and example usage for interacting with the system.
