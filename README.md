@@ -91,6 +91,7 @@ flaskr/
   ```
 5. **Running the flask app**:
   ```bash
+  export app=__init__.py
   flask --app flaskr run --debug --host=0.0.0.0
   ```
 ## Database Structure
