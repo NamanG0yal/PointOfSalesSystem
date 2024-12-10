@@ -39,7 +39,11 @@ flaskr/
 ├── static/              # Static files (CSS, JS, images
 ```
 ### Explanation:
-1. **`__init__.py`**: Contains the main application factory and initializes core c ```ages.
+1. **`__init__.py`**: Contains the main application factory and initializes core components like the database and blueprints.
+2. **`init_db.py`**: Handles the creation and initialization of the database schema.
+3. **`auth.py`**: Manages user authentication (login, registration, etc.) using a Flask blueprint.
+4. **`templates/`**: Holds all HTML files, organized into subdirectories (`auth` for authentication, `dashboard` for the main app interface).
+5. **`static/`**: Contains static assets like stylesheets, JavaScript, and images.
 
 ---
 
