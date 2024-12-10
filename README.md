@@ -60,6 +60,13 @@ flaskr/
    git clone https://github.com/NamanG0yal/PointOfSalesSystem
    cd PointOfSalesSystem
    ```
+2. **Setup the Virtual Environment**:
+  ```bash
+  rm pos/
+  python -m venv pos
+  source pos/bin/activate  # On Windows: pos\Scripts\activate
+
+  ```
 ## Database Structure
 
 This documentation outlines the models for a point of sales system, including **InventoryItem**, **Customer**, **Staff**, and **Transaction** models. Each section covers field descriptions, relationships, and example usage for interacting with the system.
