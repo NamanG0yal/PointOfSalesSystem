@@ -70,7 +70,14 @@ flaskr/
   ```
 3. **Setting up the database**:
   ```bash
-
+  psql -U postgres
+  #enter the password that you set during the installation of psql 
+  #once in 
+  CREATE DATABASE zapay WITH OWNER=naman;
+  #You can change zapay to any desired name and similarly the owner name can be changed however make sure to change the owner name and database name in the init_db.py file
+  \c zapay;
+  #To check if the database has been created succesfully 
+  \q
   ```
 ## Database Structure
 
