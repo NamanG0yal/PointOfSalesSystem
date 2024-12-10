@@ -25,9 +25,19 @@
 ## Project File Structure
 
 
-
-flaskr/ ├── init.py # Main application factory ├── init_db.py # Database initialization script ├── auth.py # Authentication blueprint ├── templates/ # HTML templates │ ├── auth/ # Templates for authentication │ │ ├── login.html │ │ ├── register.html │ └── dashboard/ # Templates for dashboard │ ├── index.html ├── static/ # Static files (CSS, JS, images)
-
+```plain text
+flaskr/
+├── __init__.py          # Main application factory
+├── init_db.py           # Database initialization script
+├── auth.py              # Authentication blueprint
+├── templates/           # HTML templates
+│   ├── auth/            # Templates for authentication
+│   │   ├── login.html
+│   │   ├── register.html
+│   └── dashboard/       # Templates for dashboard
+│       ├── inventory.html
+├── static/              # Static files (CSS, JS, images
+```
 ## Database Structure
 
 This documentation outlines the models for a point of sales system, including **InventoryItem**, **Customer**, **Staff**, and **Transaction** models. Each section covers field descriptions, relationships, and example usage for interacting with the system.
