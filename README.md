@@ -91,8 +91,8 @@ flaskr/
   ```
 5. **Running the flask app**:
   ```bash
-  export app=__init__.py
-  flask --app flaskr run --debug --host=0.0.0.0
+  export app=__init__.py #adding the app which needs to be run when calling flask --app in the environment variable for flask u can manually add this line .flaskenv file 
+  flask --app flaskr run --debug --host=0.0.0.0 # to run the app  ,  to exit simply press ctrl + C
   ```
 ## Database Structure
 
